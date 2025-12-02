@@ -5,13 +5,13 @@
   <meta charset="utf-8" />
   <title>HelioAndes – Panel de Administración</title>
 
-  <!-- Fuente similar al ejemplo del profesor -->
+  <!-- Fuente AdminLTE -->
   <link rel="stylesheet"
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
 
   <!-- Font Awesome -->
   <link rel="stylesheet" href="/adminlte/plugins/fontawesome-free/css/all.min.css">
-  <!-- overlayScrollbars (detalle estético AdminLTE) -->
+  <!-- overlayScrollbars -->
   <link rel="stylesheet" href="/adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
   <!-- Tema AdminLTE -->
   <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css">
@@ -21,7 +21,8 @@
 
 <body class="hold-transition sidebar-mini layout-fixed">
   <div class="wrapper">
-    <!-- Navbar -->
+
+    <!-- NAVBAR estilo demo AdminLTE -->
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
       <!-- Left navbar links -->
       <ul class="navbar-nav">
@@ -31,15 +32,63 @@
           </a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="/" class="nav-link">
-            <i class="fas fa-home mr-1"></i> Sitio público HelioAndes
+          <a href="/" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="/" class="nav-link">Sitio público HelioAndes</a>
+        </li>
+      </ul>
+
+      <!-- Right navbar links -->
+      <ul class="navbar-nav ml-auto">
+        <!-- Search -->
+        <li class="nav-item">
+          <a class="nav-link" data-widget="navbar-search" href="#" role="button">
+            <i class="fas fa-search"></i>
           </a>
+          <div class="navbar-search-block">
+            <form class="form-inline">
+              <div class="input-group input-group-sm">
+                <input class="form-control form-control-navbar" type="search"
+                  placeholder="Buscar" aria-label="Buscar">
+                <div class="input-group-append">
+                  <button class="btn btn-navbar" type="submit">
+                    <i class="fas fa-search"></i>
+                  </button>
+                  <button class="btn btn-navbar" type="button" data-widget="navbar-search">
+                    <i class="fas fa-times"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </li>
+
+        <!-- Notifications demo -->
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#">
+            <i class="far fa-bell"></i>
+            <span class="badge badge-warning navbar-badge">3</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <span class="dropdown-item dropdown-header">3 notificaciones</span>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-info-circle mr-2"></i> Actualización de servicios
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item">
+              <i class="fas fa-solar-panel mr-2"></i> Nuevos planes cargados
+            </a>
+            <div class="dropdown-divider"></div>
+            <a href="#" class="dropdown-item dropdown-footer">Ver todas</a>
+          </div>
         </li>
       </ul>
     </nav>
     <!-- /.navbar -->
 
-    <!-- Main Sidebar Container -->
+    <!-- SIDEBAR -->
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="/admin/dashboard.html" class="brand-link">
@@ -49,7 +98,7 @@
 
       <!-- Sidebar -->
       <div class="sidebar">
-        <!-- User panel (similar al ejemplo del profe) -->
+        <!-- User panel -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
             <i class="fas fa-user-circle text-white" style="font-size: 32px;"></i>
@@ -95,9 +144,10 @@
       <!-- /.sidebar -->
     </aside>
 
-    <!-- Content Wrapper. Contains page content -->
+    <!-- CONTENT WRAPPER -->
     <div class="content-wrapper">
-      <!-- Content Header (parecido al KPIs del profe) -->
+
+      <!-- Content Header -->
       <section class="content-header">
         <div class="container-fluid">
           <div class="row mb-2">
@@ -115,7 +165,7 @@
             </div>
           </div>
 
-          <!-- Cajas tipo "small-box" como en el ejemplo -->
+          <!-- SMALL BOXES (KPI) -->
           <div class="row">
             <div class="col-lg-3 col-6">
               <div class="small-box bg-info">
@@ -302,13 +352,13 @@
     </footer>
   </div>
 
-  <!-- Scripts AdminLTE (como en el ejemplo del profesor, pero solo lo necesario) -->
+  <!-- SCRIPTS AdminLTE -->
   <script src="/adminlte/plugins/jquery/jquery.min.js"></script>
   <script src="/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="/adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
   <script src="/adminlte/dist/js/adminlte.min.js"></script>
 
-  <!-- Lógica del dashboard -->
+  <!-- Lógica del dashboard (fetch a Mockoon) -->
   <script src="./dashboard.js"></script>
 </body>
 
