@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="utf-8" />
+  <title>HelioAndes – Panel de Administración</title>
+
+  <!-- Fuente similar al ejemplo del profesor -->
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="/adminlte/plugins/fontawesome-free/css/all.min.css">
+  <!-- overlayScrollbars (detalle estético AdminLTE) -->
+  <link rel="stylesheet" href="/adminlte/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+  <!-- Tema AdminLTE -->
+  <link rel="stylesheet" href="/adminlte/dist/css/adminlte.min.css">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+
+<body class="hold-transition sidebar-mini layout-fixed">
+  <div class="wrapper">
+    <!-- Navbar -->
+    <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+      <!-- Left navbar links -->
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" data-widget="pushmenu" href="#" role="button">
+            <i class="fas fa-bars"></i>
+          </a>
+        </li>
+        <li class="nav-item d-none d-sm-inline-block">
+          <a href="/" class="nav-link">
+            <i class="fas fa-home mr-1"></i> Sitio público HelioAndes
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <!-- /.navbar -->
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <!-- Brand Logo -->
+      <a href="/admin/dashboard.html" class="brand-link">
+        <i class="fas fa-solar-panel brand-image img-circle elevation-3" style="opacity: .8"></i>
+        <span class="brand-text font-weight-light">HelioAndes Admin</span>
+      </a>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- User panel (similar al ejemplo del profe) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+          <div class="image">
+            <i class="fas fa-user-circle text-white" style="font-size: 32px;"></i>
+          </div>
+          <div class="info">
+            <span class="d-block text-white">Administrador</span>
+            <span class="badge badge-warning text-dark text-xs">Solo lectura</span>
+          </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+          <ul class="nav nav-pills nav-sidebar flex-column" role="menu">
+            <li class="nav-header">GESTIÓN</li>
+
+            <li class="nav-item">
+              <a href="#tab-servicios" class="nav-link active" data-section="servicios">
+                <i class="nav-icon fas fa-tools"></i>
+                <p>Servicios</p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="#tab-planes" class="nav-link" data-section="planes">
+                <i class="nav-icon fas fa-solar-panel"></i>
+                <p>Planes</p>
+              </a>
+            </li>
+
+            <li class="nav-header">INFORMACIÓN</li>
+            <li class="nav-item">
+              <span class="nav-link">
+                <i class="nav-icon fas fa-info-circle"></i>
+                <p class="text-sm mb-0">
+                  Panel tipo AdminLTE<br>
+                  <span class="text-xs text-muted">(listar y ver detalle)</span>
+                </p>
+              </span>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <!-- /.sidebar -->
+    </aside>
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+      <!-- Content Header (parecido al KPIs del profe) -->
+      <section class="content-header">
+        <div class="container-fluid">
+          <div class="row mb-2">
+            <div class="col-sm-6">
+              <h1 class="m-0">Panel de control – HelioAndes</h1>
+              <small class="text-muted">
+                Resumen de servicios y planes fotovoltaicos (modo lectura).
+              </small>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a href="/">Inicio</a></li>
+                <li class="breadcrumb-item active">Panel administración</li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- Cajas tipo "small-box" como en el ejemplo -->
+          <div class="row">
+            <div class="col-lg-3 col-6">
+              <div class="small-box bg-info">
+                <div class="inner">
+                  <h3 id="total-servicios">0</h3>
+                  <p>Servicios registrados</p>
+                </div>
+                <div class="icon">
+                  <i class="fas fa-tools"></i>
+                </div>
+                <a href="#tab-servicios" data-section="servicios"
+                  class="small-box-footer text-white">
+                  Ver servicios <i class="fas fa-arrow-circle-right"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-6">
+              <div class="small-box bg-success">
+                <div class="inner">
+                  <h3 id="total-planes">0</h3>
+                  <p>Planes registrados</p>
+                </div>
+                <div class="icon">
+                  <i class="fas fa-solar-panel"></i>
+                </div>
+                <a href="#tab-planes" data-section="planes"
+                  class="small-box-footer text-white">
+                  Ver planes <i class="fas fa-arrow-circle-right"></i>
+                </a>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-6">
+              <div class="small-box bg-warning">
+                <div class="inner">
+                  <h3 class="text-dark">Demo</h3>
+                  <p>Solo lectura</p>
+                </div>
+                <div class="icon">
+                  <i class="fas fa-eye"></i>
+                </div>
+                <span class="small-box-footer text-dark">
+                  Sin edición ni eliminación
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Main content -->
+      <section class="content">
+        <div class="container-fluid">
+
+          <!-- TAB SERVICIOS -->
+          <div id="tab-servicios" class="section-tab">
+            <div class="row">
+              <div class="col-12">
+                <div class="card card-primary card-outline">
+                  <div class="card-header">
+                    <h3 class="card-title">
+                      <i class="fas fa-tools mr-1"></i>
+                      Servicios registrados
+                    </h3>
+                    <div class="card-tools">
+                      <span class="badge badge-light" id="badge-servicios">0 servicios</span>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+
+                      <!-- Tabla -->
+                      <div class="col-md-8">
+                        <div class="table-responsive">
+                          <table class="table table-striped table-hover" id="tabla-servicios">
+                            <thead class="thead-light">
+                              <tr>
+                                <th style="width:60px;">#</th>
+                                <th>Título</th>
+                                <th>Descripción corta</th>
+                                <th style="width:110px;">Detalle</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <!-- filas generadas por JS -->
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+
+                      <!-- Detalle -->
+                      <div class="col-md-4">
+                        <div class="card card-outline card-info">
+                          <div class="card-header">
+                            <h3 class="card-title">Detalle del servicio</h3>
+                          </div>
+                          <div class="card-body" id="serv-detalle">
+                            <p class="text-muted mb-0">
+                              Selecciona un servicio en la tabla para ver el detalle.
+                            </p>
+                          </div>
+                          <div class="card-footer text-sm text-muted">
+                            Requisito: listar servicios y ver detalle de un servicio seleccionado.
+                          </div>
+                        </div>
+                      </div>
+
+                    </div> <!-- /.row -->
+                  </div> <!-- /.card-body -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB PLANES -->
+          <div id="tab-planes" class="section-tab" style="display:none;">
+            <div class="row">
+              <div class="col-12">
+                <div class="card card-success card-outline">
+                  <div class="card-header">
+                    <h3 class="card-title">
+                      <i class="fas fa-solar-panel mr-1"></i>
+                      Planes registrados
+                    </h3>
+                    <div class="card-tools">
+                      <span class="badge badge-light" id="badge-planes">0 planes</span>
+                    </div>
+                  </div>
+                  <div class="card-body">
+                    <div class="row">
+
+                      <!-- Tabla -->
+                      <div class="col-md-8">
+                        <div class="table-responsive">
+                          <table class="table table-striped table-hover" id="tabla-planes">
+                            <thead class="thead-light">
+                              <tr>
+                                <th style="width:60px;">#</th>
+                                <th>Nombre</th>
+                                <th>Rango</th>
+                                <th style="width:110px;">Detalle</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <!-- filas generadas por JS -->
+                            </tbody>
+                          </table>
+                        </div>
+                      </div>
+
+                      <!-- Detalle -->
+                      <div class="col-md-4">
+                        <div class="card card-outline card-success">
+                          <div class="card-header">
+                            <h3 class="card-title">Detalle del plan</h3>
+                          </div>
+                          <div class="card-body" id="plan-detalle">
+                            <p class="text-muted mb-0">
+                              Selecciona un plan en la tabla para ver el detalle.
+                            </p>
+                          </div>
+                          <div class="card-footer text-sm text-muted">
+                            Requisito: listar planes y ver detalle de un plan registrado.
+                          </div>
+                        </div>
+                      </div>
+
+                    </div> <!-- /.row -->
+                  </div> <!-- /.card-body -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /.container-fluid -->
+      </section>
+      <!-- /.content -->
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer text-sm">
+      <strong>HelioAndes</strong> – Panel de administración. Solo lectura.
+    </footer>
+  </div>
+
+  <!-- Scripts AdminLTE (como en el ejemplo del profesor, pero solo lo necesario) -->
+  <script src="/adminlte/plugins/jquery/jquery.min.js"></script>
+  <script src="/adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+  <script src="/adminlte/dist/js/adminlte.min.js"></script>
+
+  <!-- Lógica del dashboard -->
+  <script src="./dashboard.js"></script>
+</body>
+
+</html>
