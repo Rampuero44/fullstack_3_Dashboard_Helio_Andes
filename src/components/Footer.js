@@ -14,10 +14,22 @@ function Footer() {
           <a href="#!" className="footer-link">Privacidad</a>
           <span className="opacity-50">·</span>
           <a href="#!" className="footer-link">Términos</a>
+
+          
+  
+  <div class="text-center mt-3">
+    <a href="/admin/login.html" class="btn btn-dark btn-sm">
+      <i class="fas fa-lock mr-1"></i> Acceso
+    </a>
+  </div>
+    
+
         </nav>
       </div>
     </footer>
   );
+
+  
 }
 
 export default Footer;

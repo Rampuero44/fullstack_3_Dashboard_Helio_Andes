@@ -9,9 +9,10 @@ let planes = [];
 
 async function cargarServicios() {
   try {
-    const resp = await fetch(`${API_BASE}/servicios`);
+    const resp = await fetch(`${API_BASE}/servicios`, { cache: "no-store" });
     if (!resp.ok) throw new Error("Error HTTP servicios");
     servicios = await resp.json();
+    console.log("Servicios desde Mockoon:", servicios.length);
   } catch (e) {
     console.error("Error cargando servicios, usando datos de respaldo:", e);
     // respaldo por si Mockoon no está encendido
@@ -35,6 +36,11 @@ async function cargarServicios() {
         id: 4,
         titulo: "Mantención",
         descripcion: "Planes periódicos para extender la vida útil del sistema."
+      },
+      {
+        id: 5,
+        titulo: "Instalación industrial avanzada",
+        descripcion: "Servicio especializado para empresas e instalaciones industriales."
       }
     ];
   }
@@ -42,9 +48,10 @@ async function cargarServicios() {
 
 async function cargarPlanes() {
   try {
-    const resp = await fetch(`${API_BASE}/planes`);
+    const resp = await fetch(`${API_BASE}/planes`, { cache: "no-store" });
     if (!resp.ok) throw new Error("Error HTTP planes");
     planes = await resp.json();
+    console.log("Planes desde Mockoon:", planes.length);
   } catch (e) {
     console.error("Error cargando planes, usando datos de respaldo:", e);
     // respaldo por si Mockoon no está encendido
@@ -76,6 +83,7 @@ async function cargarPlanes() {
 function renderServicios() {
   const tbody = document.querySelector("#tabla-servicios tbody");
   tbody.innerHTML = "";
+
   servicios.forEach((s, index) => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
@@ -91,16 +99,37 @@ function renderServicios() {
     tbody.appendChild(tr);
   });
 
+  // total servicios
   const total = servicios.length;
   const badge = document.getElementById("badge-servicios");
   const smallBox = document.getElementById("total-servicios");
   if (badge) badge.textContent = `${total} servicio${total !== 1 ? "s" : ""}`;
   if (smallBox) smallBox.textContent = total;
+
+  // 👉 Contar servicios industriales para la card "Servicios industria"
+  const totalIndustria = servicios.filter(s => {
+    const t = (s.titulo || "").toLowerCase();
+    const d = (s.descripcion || "").toLowerCase();
+
+    return (
+      t.includes("industria") ||
+      t.includes("industrial") ||
+      d.includes("industria") ||
+      d.includes("industrial") ||
+      d.includes("empresa") ||
+      t.includes("empresa")
+    );
+  }).length;
+
+  const boxInd = document.getElementById("total-serv-industria");
+  if (boxInd) boxInd.textContent = totalIndustria;
 }
 
 function renderPlanes() {
   const tbody = document.querySelector("#tabla-planes tbody");
+  if (!tbody) return;
   tbody.innerHTML = "";
+
   planes.forEach((p, index) => {
     const tr = document.createElement("tr");
     tr.innerHTML = `
@@ -118,11 +147,26 @@ function renderPlanes() {
     tbody.appendChild(tr);
   });
 
+  // Total planes
   const total = planes.length;
   const badge = document.getElementById("badge-planes");
   const smallBox = document.getElementById("total-planes");
   if (badge) badge.textContent = `${total} plan${total !== 1 ? "es" : ""}`;
   if (smallBox) smallBox.textContent = total;
+
+  // 👉 Totales por tipo (desde Mockoon, según el campo "rango")
+  const totalRes = planes.filter(p =>
+    (p.rango || "").toLowerCase().includes("residencial")
+  ).length;
+
+  const totalEmp = planes.filter(p =>
+    (p.rango || "").toLowerCase().includes("industrial")
+  ).length;
+
+  const boxRes = document.getElementById("total-planes-res");
+  const boxEmp = document.getElementById("total-planes-ind");
+  if (boxRes) boxRes.textContent = totalRes;
+  if (boxEmp) boxEmp.textContent = totalEmp;
 }
 
 // ----- DETALLES -----
